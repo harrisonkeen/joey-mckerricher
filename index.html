@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Joseph Mckerricher — Actor</title>
+<meta name="description" content="Joseph Mckerricher, Vancouver actor and martial artist. Demo, voice-over and commercial reels, photos and credits.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wdth,wght@0,62..100,400..800;1,62..100,400..700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0b0b0c;      /* page, hero, photos, footer */
+    --iron: #161415;       /* ticker + reel band */
+    --bone: #ebe5db;       /* text on dark, credits page */
+    --ash: #9b948b;        /* secondary text on dark */
+    --soot: #4c4643;       /* secondary text on bone */
+    --accent: #c0251f;     /* blood: his oxblood shirts + the Fallen Champion poster */
+    --accent-ink: #8f1611; /* the same red, on bone */
+    --gutter: clamp(16px, 5vw, 72px);
+    --text: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --display: "Anton", Impact, sans-serif;
+    --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --blotch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900' preserveAspectRatio='none'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.008' numOctaves='5' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.6 -.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23b)'/%3E%3C/svg%3E");
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { background: var(--black); color: var(--bone); scroll-behavior: smooth; }
+  body { margin: 0; font: 400 17px/1.6 var(--text); -webkit-font-smoothing: antialiased; position: relative; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .wrap { position: relative; z-index: 2; width: min(100% - 2 * var(--gutter), 1320px); margin-inline: auto; }
+  .display { font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .88; letter-spacing: .01em; margin: 0; }
+  .label { font-stretch: 70%; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+
+  /* ---------- Hero: centred portrait, name slammed across it ---------- */
+  .hero { position: relative; overflow: hidden; isolation: isolate; background: var(--black); }
+  .stage { position: relative; display: flex; flex-direction: column; align-items: center; padding-top: 24px; }
+  .hero-photo { position: relative; z-index: 1; height: calc(var(--screen, 100svh) * .8); max-width: 100%; display: flex; justify-content: center; }
+  .hero-photo img {
+    height: 100%; width: auto; max-width: 100%; object-fit: cover; object-position: 50% 15%;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 24%, #000 76%, transparent), linear-gradient(transparent, #000 8%, #000 58%, transparent 97%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent, #000 24%, #000 76%, transparent), linear-gradient(transparent, #000 8%, #000 58%, transparent 97%);
+    mask-composite: intersect;
+  }
+  .name { position: relative; z-index: 4; text-align: center; white-space: nowrap; color: var(--bone); text-shadow: 0 4px 40px rgba(0, 0, 0, .55); }
+  .fit { display: inline-block; }
+  .name .w { display: inline-block; }
+  .stacked .name .w { display: block; width: max-content; margin-inline: auto; }
+  .stacked .name .sp { display: none; }
+  .under { position: relative; z-index: 4; margin: 14px 0 0; color: var(--ash); font-size: 15px; }
+  .under b { color: var(--accent); margin-inline: .7em; }
+  .hero .bar { position: relative; z-index: 4; align-self: stretch; height: 6px; margin-top: 30px; background: var(--accent); }
+  .grain { position: absolute; inset: -50%; z-index: 5; pointer-events: none; opacity: .09; mix-blend-mode: overlay; background-image: var(--noise); }
+  .sparks { position: absolute; inset: 0; z-index: 6; pointer-events: none; }
+  .flash { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0;
+    background: radial-gradient(ellipse 60% 30% at 50% var(--fy, 78%), color-mix(in srgb, var(--accent) 70%, transparent), transparent 70%); }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-photo img { animation: expose 1.3s cubic-bezier(.3, .6, .2, 1) both; }
+    .name .w { animation: slam .34s cubic-bezier(.55, 0, .9, .4) both; }
+    .name .w1 { animation-delay: .5s; }
+    .name .w2 { animation-delay: .78s; }
+    .stage.hit { animation: shake .42s cubic-bezier(.3, .7, .4, 1); }
+    .flash.hit { animation: flash .5s ease-out; }
+    .hero .bar { animation: draw .5s 1.15s cubic-bezier(.7, 0, .2, 1) both; }
+    .under { animation: fade .8s 1.4s both; }
+    .grain { animation: grain .9s steps(6) infinite; }
+    @keyframes expose { 0% { opacity: 0; filter: brightness(.15); transform: scale(1.08); } 60% { opacity: 1; filter: brightness(.55); transform: scale(1.025); }
+      66% { filter: brightness(1.55) contrast(1.15); transform: scale(1); } 100% { filter: none; transform: none; } }
+    @keyframes slam { from { opacity: 0; transform: scale(2.8) translateY(-.08em); filter: blur(6px); } 70% { opacity: 1; filter: none; } to { transform: none; } }
+    @keyframes shake { 0% { transform: translate(0, 0); } 15% { transform: translate(-7px, 5px) rotate(-.4deg); } 30% { transform: translate(6px, -4px) rotate(.35deg); }
+      45% { transform: translate(-4px, 3px); } 60% { transform: translate(3px, -2px); } 80% { transform: translate(-1px, 1px); } 100% { transform: none; } }
+    @keyframes flash { 0% { opacity: 0; } 12% { opacity: .55; } 100% { opacity: 0; } }
+    @keyframes draw { from { transform: scaleX(0); } }
+    @keyframes fade { from { opacity: 0; } }
+    @keyframes grain { 0% { transform: translate(0, 0); } 20% { transform: translate(-6%, 4%); } 40% { transform: translate(5%, -7%); } 60% { transform: translate(-3%, 9%); } 80% { transform: translate(8%, -2%); } }
+  }
+
+  /* ---------- Embers: sparks rising, spread down the whole page (anchored to it, so they scroll away) ---------- */
+  .embers { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
+  .embers i { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); border-radius: 50%; opacity: 0;
+    background: #ffb36b; box-shadow: 0 0 6px 1px #ff7a2e, 0 0 14px 2px color-mix(in srgb, var(--accent) 70%, transparent); }
+  @media (prefers-reduced-motion: no-preference) {
+    .embers i { animation: ember var(--d) var(--dl) linear infinite; }
+    @keyframes ember { 0% { opacity: 0; transform: translate(0, 0); } 10% { opacity: 1; } 55% { transform: translate(var(--dx), calc(var(--rise) * -.55)); }
+      85% { opacity: .8; } 100% { opacity: 0; transform: translate(calc(var(--dx) * -.4), calc(var(--rise) * -1)); } }
+  }
+  @media (prefers-reduced-motion: reduce) { .embers { display: none; } }
+
+  /* ---------- Ticker of roles ---------- */
+  .ticker { position: relative; overflow: hidden; background: var(--iron); padding-block: 20px; }
+  .ticker-track { display: flex; width: max-content; }
+  .ticker-track span { display: inline-flex; align-items: baseline; gap: 14px; white-space: nowrap; }
+  .ticker-track b { font: 400 32px/1 var(--display); text-transform: uppercase; letter-spacing: .01em; }
+  .ticker-track i { font-style: italic; font-stretch: 75%; font-size: 17px; color: var(--ash); }
+  .ticker-track span::after { content: ""; width: 9px; height: 9px; background: var(--accent); align-self: center; margin-inline: 42px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ticker-track { animation: tick 70s linear infinite; }
+    .ticker:hover .ticker-track { animation-play-state: paused; }
+    @keyframes tick { to { transform: translateX(-50%); } }
+  }
+
+  /* ---------- Sections ---------- */
+  /* clip sideways only: the tape and ghost words run past the edges */
+  section, .footer { position: relative; isolation: isolate; overflow-x: clip; }
+  section { padding-block: clamp(64px, 9vw, 120px); }
+  .reel { background: var(--iron); }
+  #photos { background: var(--black); }
+  .credits-sec { background: var(--bone); color: #000; --ghost: #000; }
+  .footer { background: var(--black); }
+
+  /* Section titles: big, running into a rule, with the word again huge and outlined behind it */
+  .sec-head { position: relative; z-index: 0; display: flex; align-items: flex-end; gap: 24px; margin-bottom: clamp(28px, 4vw, 48px); padding-top: clamp(24px, 4vw, 56px); }
+  .sec-head h2 { position: relative; font-size: clamp(52px, 7vw, 100px); }
+  .sec-head::after { content: ""; flex: 1; height: 4px; background: currentColor; margin-bottom: .45em; }
+  .sec-head h2::before { content: attr(data-ghost); position: absolute; z-index: -1; left: -.06em; bottom: -.08em; font-size: 2.7em; line-height: .8;
+    color: transparent; -webkit-text-stroke: 2px var(--ghost, var(--bone)); opacity: .2; white-space: nowrap; pointer-events: none; }
+
+  /* Section backgrounds */
+  .bg-layer { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  /* his photo, faded black and white; it fades in below the tape at the top */
+  .bg-photo::before { content: ""; position: absolute; inset: 0; background: var(--img) var(--ipos, 50% 30%) / cover; filter: grayscale(1) contrast(1.15); opacity: .2;
+    -webkit-mask-image: linear-gradient(transparent, #000 22%, #000 70%, transparent); mask-image: linear-gradient(transparent, #000 22%, #000 70%, transparent); }
+  /* concrete grit: one mottled sheet stretched over the band (a repeating tile showed its edge), fine grain, dark edges */
+  .bg-grit { background: radial-gradient(ellipse 70% 60% at 50% 50%, transparent 40%, rgba(0, 0, 0, .55)); }
+  .bg-grit::before { content: ""; position: absolute; inset: 0; background: var(--blotch) center / 100% 100% no-repeat; opacity: .07; }
+  .bg-grit::after, .bg-paper::after { content: ""; position: absolute; inset: 0; background: var(--noise); opacity: .16; mix-blend-mode: overlay; }
+  /* rough paper on the bone credits page */
+  .bg-paper::before { content: ""; position: absolute; inset: 0; background: var(--blotch) center / 100% 100% no-repeat; opacity: .05; filter: invert(1); mix-blend-mode: multiply; }
+  .bg-paper::after { opacity: .3; mix-blend-mode: multiply; }
+
+  /* Seams: a band of red tape with his name, laid across the join so it hides it */
+  .seam { position: absolute; z-index: 6; top: 0; left: -3%; right: -3%; overflow: hidden; pointer-events: none; transform: translateY(-50%) rotate(-1.6deg);
+    padding: 9px 0 7px; background: var(--accent); color: #0b0b0c; box-shadow: 0 6px 18px rgba(0, 0, 0, .45); }
+  .credits-sec .seam { transform: translateY(-50%) rotate(1.2deg); }
+  .seam-text { display: flex; width: max-content; font: 400 19px/1 var(--display); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+  .seam-text span { padding-right: 18px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .seam-text { animation: tick 50s linear infinite; }
+    .credits-sec .seam-text { animation-direction: reverse; }
+  }
+
+  /* Photo clusters: a few prints, tilted, held down with gaffer tape. Each sits wholly inside its section, in open space */
+  .cluster { position: relative; flex: none; pointer-events: none; }
+  .snap { position: absolute; left: var(--x); top: var(--y); width: var(--w); margin: 0; z-index: var(--z, 1); transform: rotate(var(--r)); transition: transform .5s cubic-bezier(.22, .7, .2, 1); pointer-events: auto; }
+  .snap:hover { transform: rotate(0deg) scale(1.06); z-index: 6; }
+  .snap .paper { background: var(--bone); padding: 6px; box-shadow: 0 14px 30px rgba(0, 0, 0, .55); }
+  .snap img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: var(--pos, 50% 30%); filter: contrast(1.05) saturate(.85); }
+  .snap::before { content: ""; position: absolute; z-index: 2; top: -8px; left: 50%; width: 64px; height: 20px; transform: translateX(-50%) rotate(var(--tape, -8deg));
+    background: rgba(28, 28, 30, .9); background-image: var(--noise); background-blend-mode: soft-light; box-shadow: 0 1px 3px rgba(0, 0, 0, .4); }
+
+  /* Marker notes */
+  .note { position: absolute; z-index: 8; pointer-events: none; white-space: nowrap; transform: rotate(var(--nr, -5deg));
+    font: 400 22px/1.1 "Permanent Marker", cursive; color: var(--bone); }
+  .credits-sec .note { color: var(--accent-ink); }
+  .note svg { display: block; width: 66px; height: 44px; margin-top: 2px; fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---------- Reel: the vertical demo, with what he's shot lately beside it ---------- */
+  .reel-body { display: grid; grid-template-columns: max-content 1fr; gap: clamp(32px, 6vw, 96px); align-items: center; }
+  .reel-frame { position: relative; padding: 8px; background: var(--black); border-top: 6px solid var(--accent); }
+  /* explicit width and height (not aspect-ratio) so no browser can size the frame narrower than the video */
+  .reel-video { --h: min(calc(var(--screen, 100svh) * .76), 740px); position: relative; height: var(--h); width: calc(var(--h) * 592 / 1052); background: #000; }
+  .reel-video video { width: 100%; height: 100%; display: block; object-fit: contain; }
+  .reel-start { position: absolute; inset: 0; border: 0; padding: 0; background: rgba(0, 0, 0, .25); cursor: pointer; display: grid; place-items: center; }
+  .reel-start span { width: 92px; aspect-ratio: 1; display: grid; place-items: center; background: var(--accent); color: #fff; transition: transform .2s; }
+  .reel-start svg { width: 28px; margin-left: 6px; }
+  .reel-start:hover span { transform: scale(1.08); }
+  .reel.played .reel-start { display: none; }
+  /* Our own controls: the browser's bar has a minimum width and clips its end buttons in a frame this narrow */
+  .hud { position: absolute; inset: auto 0 0 0; display: none; align-items: center; gap: 6px; padding: 32px 10px 10px; background: linear-gradient(transparent, rgba(0, 0, 0, .8)); transition: opacity .3s; }
+  .reel.played .hud { display: flex; }
+  .reel.playing.idle .hud { opacity: 0; }
+  .reel.playing.idle .reel-video { cursor: none; }
+  .hud button { flex: none; width: 34px; height: 34px; display: grid; place-items: center; padding: 0; border: 0; background: none; color: var(--bone); cursor: pointer; }
+  .hud button:hover { color: var(--accent); }
+  .hud svg { width: 16px; height: 16px; }
+  .hud-seek { flex: 1; min-width: 40px; margin: 0; accent-color: var(--accent); cursor: pointer; }
+  .hud-time { flex: none; font-size: 13px; font-variant-numeric: tabular-nums; color: var(--bone); white-space: nowrap; }
+  .i-pause, .reel.playing .i-play, .i-muted, .muted .i-sound { display: none; }
+  .reel.playing .i-pause, .muted .i-muted { display: block; }
+  .reel-video:fullscreen { width: 100vw; height: 100vh; }
+  .play-row { position: relative; }
+  .play-btn { display: inline-flex; align-items: center; gap: 14px; padding: 16px 26px; background: var(--accent); border: 2px solid var(--accent); color: #fff; cursor: pointer; font-weight: 700; font-stretch: 80%; letter-spacing: .1em; text-transform: uppercase; transition: background .2s; }
+  .play-btn:hover { background: transparent; }
+  .play-btn svg { width: 11px; }
+  .play-btn small { font-weight: 500; letter-spacing: .04em; opacity: .8; }
+  .b-now { display: none; }
+  .reel.playing .b-now { display: inline; }
+  .reel.playing .b-play { display: none; }
+  .n-reel { position: static; display: inline-flex; align-items: center; gap: 8px; flex-direction: row-reverse; margin: 22px 0 0 4px; --nr: -3deg; }
+  .n-reel svg { margin: 0; }
+  /* three reels, one player: the list picks what the frame plays */
+  .reel-tabs { display: grid; gap: 2px; max-width: 460px; margin: 0 0 30px; }
+  .reel-tabs button { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 12px 16px 10px 18px; border: 0; border-left: 6px solid transparent;
+    background: rgba(235, 229, 219, .05); color: var(--ash); text-align: left; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+  .reel-tabs button:hover { background: rgba(235, 229, 219, .1); color: var(--bone); }
+  .reel-tabs button[aria-pressed="true"] { border-left-color: var(--accent); background: rgba(235, 229, 219, .12); color: var(--bone); }
+  .reel-tabs b { font: 400 26px/1 var(--display); text-transform: uppercase; letter-spacing: .01em; }
+  .reel-tabs span { font-size: 14px; font-stretch: 80%; white-space: nowrap; }
+  /* hidden but still holding its space, so switching reels never moves the layout */
+  .n-reel[hidden] { visibility: hidden; }
+  /* the commercial demo is sound only: bars move over his photo while it plays */
+  .eq { position: absolute; left: 50%; bottom: 64px; transform: translateX(-50%); display: none; align-items: flex-end; gap: 5px; height: 46px; pointer-events: none; }
+  .eq i { width: 7px; height: 100%; background: var(--accent); transform-origin: bottom; transform: scaleY(.2); box-shadow: 0 0 12px rgba(0, 0, 0, .5); }
+  .reel.audio.played .eq { display: flex; }
+  @media (prefers-reduced-motion: no-preference) {
+    .reel.audio.playing .eq i { animation: eq .9s ease-in-out infinite alternate; }
+    .eq i:nth-child(2) { animation-delay: -.3s; animation-duration: .7s; } .eq i:nth-child(3) { animation-delay: -.6s; animation-duration: 1.1s; }
+    .eq i:nth-child(4) { animation-delay: -.15s; animation-duration: .8s; } .eq i:nth-child(5) { animation-delay: -.45s; animation-duration: 1s; }
+    .eq i:nth-child(6) { animation-delay: -.75s; animation-duration: .75s; } .eq i:nth-child(7) { animation-delay: -.2s; animation-duration: .95s; }
+    @keyframes eq { from { transform: scaleY(.15); } to { transform: scaleY(1); } }
+  }
+  .on-set { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 28px 40px; margin-top: 44px; }
+  .on-set h3 { margin: 0 0 16px; color: var(--ash); font-size: 14px; }
+  .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 220px)); gap: 20px; }
+  .card { margin: 0; }
+  .card img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 30%; filter: grayscale(.25) contrast(1.05); transition: filter .3s; }
+  .card:hover img { filter: none; }
+  .card figcaption { padding-top: 12px; border-top: 4px solid var(--accent); margin-top: 10px; }
+  .card b { display: block; font: 400 24px/1 var(--display); text-transform: uppercase; }
+  .card span { display: block; margin-top: 6px; color: var(--ash); font-size: 15px; font-stretch: 80%; }
+  /* Super Godfather 2 set shots, beside the cards; the note sits above them */
+  .c1 { width: 270px; height: 290px; margin-top: 110px; }
+  /* the arrow stops short of the tape: notes point at the prints, never across them */
+  .c1 .note { left: 0; top: -108px; --nr: -4deg; }
+  .c1 .note svg { margin-left: 120px; transform: scaleX(-1) rotate(20deg); }
+
+  /* ---------- Photos: a police line-up wall ---------- */
+  .ph-head { flex-wrap: nowrap; }
+  /* Fallen Champion ring shots in the open space right of the heading */
+  .c2 { width: 290px; height: 270px; margin-left: 40px; align-self: center; order: 3; }
+  .c2 .note { right: calc(100% + 6px); top: 26px; --nr: -6deg; text-align: right; }
+  .c2 .note svg { margin-left: auto; }
+  .gallery { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px 18px; padding: 20px 20px 20px 64px; background: #121213; }
+  .gallery button { position: relative; z-index: 1; padding: 0; border: 0; background: #000; cursor: zoom-in; overflow: hidden; aspect-ratio: 2 / 3; }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; filter: grayscale(1) contrast(1.1); transition: transform .5s, filter .4s; }
+  .gallery button:hover img { transform: scale(1.04); filter: none; }
+  .gallery button .no { position: absolute; left: 10px; bottom: 10px; padding: 3px 9px 1px; background: var(--bone); color: #000; font: 400 22px/1 var(--display); }
+  .gallery button:hover .no { background: var(--accent); color: #fff; }
+  /* the height chart behind the whole line-up: a line every half foot, 0' at the last row's foot up to 7' at the first row's top */
+  .wall { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .wall i { position: absolute; left: 0; right: 0; height: 1px; background: rgba(235, 229, 219, .14); }
+  .wall i.ft { background: rgba(235, 229, 219, .3); }
+  .wall b { position: absolute; left: 12px; transform: translateY(-50%); font: 400 20px/1 var(--display); color: rgba(235, 229, 219, .55); }
+
+  /* ---------- Credits: the one light section, by type in balanced columns ---------- */
+  .credits { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 0 clamp(28px, 4vw, 56px); border-bottom: 4px solid #000; padding-bottom: 28px; }
+  .credit-keep { display: flow-root; }
+  .credit-col > :first-child h3 { margin-top: 0; }
+  .credits h3 { font: 400 30px/1 var(--display); text-transform: uppercase; color: var(--accent-ink); margin: 34px 0 6px; padding-bottom: 8px; border-bottom: 4px solid #000; }
+  .credits h3 sup { font: 700 13px var(--text); color: var(--soot); margin-left: 6px; vertical-align: super; }
+  .credit { display: grid; grid-template-columns: 1fr auto; column-gap: 16px; padding: 10px 0; border-bottom: 1px solid rgba(0, 0, 0, .16); }
+  .credit b { font-weight: 700; line-height: 1.3; }
+  .credit i { grid-row: 2; font-stretch: 80%; color: var(--soot); font-size: 15.5px; line-height: 1.4; }
+  .credit em { grid-row: 1 / span 2; grid-column: 2; font-style: normal; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .credit-col > :last-child .credit:last-child, .credit-col > .credit:last-child { border-bottom: 0; }
+  .n-credits { position: static; align-self: center; margin: 0 0 .4em; --nr: 4deg; order: 3; }
+
+  /* ---------- Footer ---------- */
+  .footer { padding-block: calc(clamp(64px, 9vw, 120px) + 20px) calc(32px + env(safe-area-inset-bottom)); }
+  .foot-top { display: grid; grid-template-columns: 1fr auto; gap: 40px 56px; align-items: center; }
+  .footer h2 { font-size: clamp(48px, 6.6vw, 100px); white-space: nowrap; margin-bottom: clamp(36px, 5vw, 56px); }
+  /* two portraits beside the contact details */
+  .c3 { width: 300px; height: 280px; }
+  .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 32px 48px; align-items: start; }
+  .foot-grid h3 { margin: 0 0 10px; font-size: 13px; color: var(--accent); }
+  .foot-grid p, .foot-grid ul { margin: 0; padding: 0; list-style: none; }
+  .foot-grid li + li { margin-top: 4px; }
+  .agency { display: inline-block; font: 400 clamp(30px, 3.4vw, 44px)/1 var(--display); text-transform: uppercase; text-decoration: none; }
+  .agency:hover { color: var(--accent); }
+  .foot-grid .sub { margin-top: 8px; color: var(--ash); }
+  .foot-grid ul a, .dm { text-decoration: none; border-bottom: 2px solid var(--accent); }
+  .foot-grid ul a:hover, .dm:hover { color: var(--accent); }
+  .colophon { margin: 72px 0 0; color: var(--ash); font-size: 14px; }
+  .built-by { display: inline-block; margin-left: 1.1em; padding-left: 1.1em; border-left: 1px solid color-mix(in srgb, currentColor 35%, transparent); font-size: 12px; font-weight: 400; letter-spacing: .02em; text-transform: none; opacity: 0.7; }
+  .built-by a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); }
+  .built-by a:hover { text-decoration-color: currentColor; }
+  @media (max-width: 600px) { .built-by { display: block; margin: 6px 0 0; padding: 0; border: 0; } }
+
+  /* Lightbox */
+  .lightbox { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; }
+  .lightbox::backdrop { background: rgba(0, 0, 0, .95); }
+  .lightbox img { max-height: 90vh; max-width: 86vw; }
+  .lightbox button { position: fixed; background: #000; color: var(--bone); border: 2px solid var(--bone); width: 52px; height: 52px; font-size: 28px; cursor: pointer; }
+  .lightbox .prev { left: 16px; top: 50%; } .lightbox .next { right: 16px; top: 50%; }
+  .lightbox-close { top: 16px; right: 16px; }
+
+  @media (max-width: 1180px) {
+    .foot-top { grid-template-columns: 1fr; }
+    .c3 { justify-self: end; }
+  }
+  @media (max-width: 960px) {
+    .reel-body { grid-template-columns: 1fr; }
+    .reel-frame { justify-self: center; order: 2; }
+    .reel-video { --w: min(78vw, 380px); width: var(--w); height: calc(var(--w) * 1052 / 592); }
+    .reel-tabs { max-width: none; }
+    .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .foot-grid > :first-child { grid-column: 1 / -1; }
+    /* the Fallen Champion cluster drops under the heading, on the right, its note to its left */
+    .ph-head { flex-wrap: wrap; }
+    .c2 { margin: 8px 0 0 auto; flex-basis: 250px; width: 250px; height: 240px; }
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .footer h2 { font-size: 11.4vw; }
+    .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-left: 44px; gap: 30px 12px; }
+    .wall b { left: 6px; font-size: 16px; }
+    .cards { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .card b { font-size: 20px; }
+    .ticker-track b { font-size: 26px; }
+    .lightbox .prev, .lightbox .next { top: auto; bottom: 16px; }
+    .note { font-size: 18px; }
+    .c1 { width: 220px; height: 236px; margin: 110px 0 0 auto; }
+    .c1 .note { left: -70px; }
+    .c2 { flex-basis: 210px; width: 210px; height: 200px; }
+    .c2 .note { white-space: normal; width: 110px; }
+    .c3 { width: 230px; height: 220px; }
+    .seam-text { font-size: 15px; }
+  }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  /* Desktop: the title runs across the top; the player left and the picker right start on one line */
+  @media (min-width: 961px) {
+    .reel-copy { display: contents; }
+    .reel-body { grid-template-columns: max-content 1fr; grid-template-areas: "head head" "frame tabs" "frame play" "frame onset";
+      grid-template-rows: auto auto auto 1fr; row-gap: 0; align-items: start; }
+    .reel-body > .reel-frame { grid-area: frame; }
+    .reel-copy > .sec-head { grid-area: head; }
+    .reel-tabs { grid-area: tabs; }
+    .play-row { grid-area: play; }
+    .on-set { grid-area: onset; }
+  }
+</style>
+<script>
+  // Phones: pin the hero to the first screen height, in px. In-app browsers (Instagram etc.) resize the whole
+  // viewport, svh included, as their toolbar slides away on scroll, so a svh/innerHeight hero grows mid-scroll.
+  // Only a width change (rotation) re-measures. Desktop keeps plain svh. Size the hero with var(--screen, 100svh).
+  (() => { if (!matchMedia('(pointer: coarse)').matches) return;
+    const r = document.documentElement; let w = 0;
+    const pin = () => { if (innerWidth === w) return; w = innerWidth; r.style.setProperty('--screen', innerHeight + 'px'); };
+    pin(); addEventListener('resize', pin); })();
+</script>
+</head>
+<body>
+
+<div class="embers" aria-hidden="true"></div>
+
+<header class="hero" id="top">
+  <div class="stage">
+    <div class="hero-photo">
+      <img src="assets/photos/hero-fur-coat.jpg" alt="Joseph Mckerricher in a fur-collared coat on the Super Godfather 2 set" width="1280" height="1600" fetchpriority="high">
+    </div>
+    <h1 class="name display"><span class="fit"><span class="w w1">Joseph</span><span class="sp"> </span><span class="w w2">Mckerricher</span></span></h1>
+    <p class="under label">Actor<b>/</b>Martial artist<b>/</b>Trainer</p>
+    <div class="bar"></div>
+  </div>
+  <div class="flash" aria-hidden="true"></div>
+  <canvas class="sparks" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+</header>
+
+<div class="ticker" aria-label="Selected roles">
+  <div class="ticker-track">
+    <span><b>Fallen Champion</b><i>Sam</i></span>
+    <span><b>Super Godfather 2</b><i>Djura</i></span>
+    <span><b>Rot in Hell, Dear Ex-Husband</b><i>Hyde Holiday</i></span>
+    <span><b>Kiss Me Kill Me</b><i>Anthony</i></span>
+    <span><b>Mafia&rsquo;s Tender Torture</b><i>Frank</i></span>
+    <span><b>Engraved on Your Heart</b><i>Duke</i></span>
+    <span><b>Her Man Is the Son of Death</b><i>Ben</i></span>
+    <span><b>Hitler&rsquo;s Last Stand</b><i>Reenactor</i></span>
+  </div>
+</div>
+
+<main>
+
+  <section class="reel" id="reel" aria-labelledby="reel-title">
+    <div class="bg-layer bg-grit" aria-hidden="true"></div>
+    <div class="wrap reel-body">
+      <div class="reel-frame">
+        <div class="reel-video">
+          <video id="player" playsinline preload="none" disablepictureinpicture
+                 poster="assets/video/reel-poster.jpg"
+                 src="assets/video/reel.mp4"></video>
+          <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <button class="reel-start" type="button" aria-label="Play the reel"><span><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 L10 6 L0 12 Z" fill="currentColor"/></svg></span></button>
+          <div class="hud">
+            <button class="hud-play" type="button" aria-label="Play or pause"><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5 L14 8 L3 14.5 Z" fill="currentColor"/></svg><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5h3.5v13H3zM9.5 1.5H13v13H9.5z" fill="currentColor"/></svg></button>
+            <input class="hud-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek">
+            <span class="hud-time">0:00 / 3:10</span>
+            <button class="hud-mute" type="button" aria-label="Mute or unmute"><svg class="i-sound" viewBox="0 0 16 16" aria-hidden="true"><path d="M1 5.5h3L8.5 2v12L4 10.5H1z" fill="currentColor"/><path d="M11 5a4 4 0 0 1 0 6M13 3a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><svg class="i-muted" viewBox="0 0 16 16" aria-hidden="true"><path d="M1 5.5h3L8.5 2v12L4 10.5H1z" fill="currentColor"/><path d="M11 5.5l4 5M15 5.5l-4 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+            <button class="hud-fs" type="button" aria-label="Full screen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 5.5v-4h4M10.5 1.5h4v4M14.5 10.5v4h-4M5.5 14.5h-4v-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="reel-copy">
+        <div class="sec-head"><h2 class="display" id="reel-title" data-ghost="Reels">Reels</h2></div>
+        <div class="reel-tabs" role="group" aria-label="Choose a reel">
+          <button type="button" aria-pressed="true" data-src="assets/video/reel.mp4" data-poster="assets/video/reel-poster.jpg" data-len="190"><b>Demo reel</b><span>On camera &middot; 3:10</span></button>
+          <button type="button" aria-pressed="false" data-src="assets/video/vo-reel.mp4" data-poster="assets/video/vo-poster.jpg" data-len="82"><b>Voice-over</b><span>Trailer narration &middot; 1:22</span></button>
+          <button type="button" aria-pressed="false" data-src="assets/video/commercial-reel.mp4" data-poster="assets/video/commercial-poster.jpg" data-len="110" data-audio><b>Commercial</b><span>Audio demo &middot; 1:50</span></button>
+        </div>
+        <div class="play-row">
+          <button class="play-btn" type="button"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 L10 6 L0 12 Z" fill="currentColor"/></svg><span class="b-play">Play the reel</span><span class="b-now">Now playing</span> <small class="reel-len">3:10</small></button>
+          <p class="note n-reel" aria-hidden="true">mostly bad guys<svg viewBox="0 0 66 44"><path d="M62 18 C 46 28, 26 28, 6 20 M14 10 L5 20 L15 28"/></svg></p>
+        </div>
+        <div class="on-set">
+          <div>
+            <h3 class="label">Lately on set</h3>
+            <div class="cards">
+              <figure class="card"><img src="assets/photos/fallen-champion.jpg" alt="Fallen Champion poster" loading="lazy" width="900" height="1200"><figcaption><b>Fallen Champion</b><span>Sam &middot; Vertical drama &middot; 2026</span></figcaption></figure>
+              <figure class="card"><img src="assets/photos/super-godfather-2.jpg" alt="Joseph in a fur-collared coat on the Super Godfather 2 set" loading="lazy" width="900" height="1200"><figcaption><b>Super Godfather 2</b><span>Djura &middot; Vertical drama &middot; 2026</span></figcaption></figure>
+            </div>
+          </div>
+          <div class="cluster c1" aria-hidden="true">
+            <figure class="snap" style="--x:0%;--y:4%;--w:54%;--r:-7deg;--pos:50% 25%"><div class="paper"><img src="assets/photos/fight-still.jpg" alt="" loading="lazy"></div></figure>
+            <figure class="snap" style="--x:46%;--y:0%;--w:54%;--r:5deg;--tape:10deg;--pos:50% 70%"><div class="paper"><img src="assets/photos/slate.jpg" alt="" loading="lazy"></div></figure>
+            <figure class="snap" style="--x:22%;--y:38%;--w:56%;--r:-2deg;--z:3;--tape:4deg"><div class="paper"><img src="assets/photos/werewolf-hands.jpg" alt="" loading="lazy"></div></figure>
+            <p class="note">on set: Super Godfather 2<svg viewBox="0 0 66 44"><path d="M6 6 C 26 4, 48 12, 58 32 M48 30 L58 34 L60 22"/></svg></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos" aria-labelledby="photos-title">
+    <div class="seam" aria-hidden="true"><div class="seam-text"></div></div>
+    <div class="bg-layer bg-photo" style="--img: url(assets/photos/costume-back.jpg); --ipos: 50% 20%" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="sec-head ph-head"><h2 class="display" id="photos-title" data-ghost="Photos">Photos</h2>
+        <div class="cluster c2" aria-hidden="true">
+          <figure class="snap" style="--x:2%;--y:8%;--w:52%;--r:-5deg;--pos:50% 50%"><div class="paper"><img src="assets/photos/ring-bw.jpg" alt="" loading="lazy"></div></figure>
+          <figure class="snap" style="--x:46%;--y:0%;--w:52%;--r:6deg;--tape:-12deg;--pos:80% 40%"><div class="paper"><img src="assets/photos/ring-red.jpg" alt="" loading="lazy"></div></figure>
+          <p class="note">Fallen Champion<br>fight camp<svg viewBox="0 0 66 44"><path d="M4 30 C 18 16, 40 17, 60 21 M51 14 L60 21 L51 28"/></svg></p>
+        </div>
+      </div>
+      <div class="gallery">
+        <div class="wall" aria-hidden="true"></div>
+        <button><img src="assets/photos/hs-09.jpg" alt="Square-on headshot in an open black jacket against a blue backdrop" loading="lazy" width="1000" height="1250"></button>
+        <button><img src="assets/photos/hs-02.jpg" alt="Smiling headshot in a black blazer and cream shirt" loading="lazy" width="1000" height="1250"></button>
+        <button><img src="assets/photos/hs-04.jpg" alt="Black jacket, hand at his chin, watch on" loading="lazy" width="1000" height="1250"></button>
+        <button><img src="assets/photos/hs-03.jpg" alt="Black tank top and chain, arms crossed, grinning" loading="lazy" width="1000" height="1250"></button>
+        <button><img src="assets/photos/hs-01.jpg" alt="Headshot in a black jacket, gripping the collar, against a dark green backdrop" loading="lazy" width="1000" height="1250"></button>
+        <button><img src="assets/photos/tweed-walk.jpg" alt="Walking towards the camera in a tweed coat" loading="lazy" width="900" height="1200"></button>
+        <button><img src="assets/photos/suit-tie.jpg" alt="Headshot in a black suit and tie" loading="lazy" width="1200" height="1200"></button>
+        <button><img src="assets/photos/hs-10.jpg" alt="Arms crossed outdoors in front of autumn leaves" loading="lazy" width="1000" height="1250"></button>
+        <button><img src="assets/photos/war-officer.jpg" alt="As a mud-streaked WWII US Army major in Hitler&rsquo;s Last Stand" loading="lazy" width="864" height="1080"></button>
+        <button><img src="assets/photos/western-grin.jpg" alt="Bloodied grin under a black cowboy hat, in a western" loading="lazy" width="568" height="711"></button>
+        <button><img src="assets/photos/police.jpg" alt="In a police uniform and vest, low-key studio light" loading="lazy" width="1000" height="1250"></button>
+        <button><img src="assets/photos/war-night.jpg" alt="Behind a machine gun at night, WWII, in Hitler&rsquo;s Last Stand" loading="lazy" width="747" height="934"></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="credits-sec" id="credits" aria-labelledby="credits-title">
+    <div class="seam" aria-hidden="true"><div class="seam-text"></div></div>
+    <div class="bg-layer bg-paper" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="sec-head"><h2 class="display" id="credits-title" data-ghost="Credits">Credits</h2><p class="note n-credits" aria-hidden="true">34 on screen</p></div>
+      <div class="credits">
+        <div class="credit-keep"><h3>Vertical drama</h3><div class="credit"><b>Super Godfather 2: My Ex Dumped the Wrong Man</b><i>Djura</i><em>2026</em></div></div>
+        <div class="credit"><b>Fallen Champion</b><i>Sam</i><em>2026</em></div>
+        <div class="credit"><b>Her Man Is the Son of Death</b><i>Ben</i><em>2026</em></div>
+        <div class="credit"><b>Your Loser Husband Is a Big Shot</b><i>Ben</i><em>2026</em></div>
+        <div class="credit"><b>Her Last Tear</b><i>Ricky</i><em>2026</em></div>
+        <div class="credit"><b>Engraved on Your Heart</b><i>Duke</i><em>2026</em></div>
+        <div class="credit"><b>Rot in Hell, Dear Ex-Husband</b><i>Hyde Holiday</i><em>2026</em></div>
+        <div class="credit"><b>Wake Up Daddy! Mommy Is Dying</b><i>Right-hand man</i><em>2025</em></div>
+        <div class="credit"><b>After I Gave Lost Billionaire Mouth-to-Mouth</b><i>Security Guard</i><em>2025</em></div>
+        <div class="credit"><b>Nanny and Billionaire: My 50-Year-Old Romance</b><i>Tyler</i><em>2025</em></div>
+        <div class="credit"><b>My Three Knights</b><i>Director Farber</i><em>2025</em></div>
+        <div class="credit"><b>Pregnant for My Bully&rsquo;s Dad</b><i>Harry</i><em>2025</em></div>
+        <div class="credit"><b>Meet Your 18-Year-Young Great-Grandmother</b><i>Mr. Baker</i><em>2025</em></div>
+        <div class="credit"><b>Mated to My Brother-in-Law Alpha</b><i>Store Owner</i><em>2025</em></div>
+        <div class="credit"><b>From One Night to Mrs. Billionaire</b><i>William</i><em>2025</em></div>
+        <div class="credit"><b>Trapped Into Your Toxic Love</b><i>Barton</i><em>2025</em></div>
+        <div class="credit"><b>Crashing Into My Magnate Ex</b><i>Paul</i><em>2025</em></div>
+        <div class="credit"><b>Love Me Like You Do</b><i>Zack</i><em>2025</em></div>
+        <div class="credit"><b>Kiss Me Kill Me</b><i>Anthony</i><em>2025</em></div>
+        <div class="credit"><b>Married My Twin Sister&rsquo;s Rich Fianc&eacute;</b><i>Micheal</i><em>2025</em></div>
+        <div class="credit"><b>She Is Not Your Wife: Love Actually All Around</b><i>Joseph</i><em>2024</em></div>
+        <div class="credit"><b>Mafia&rsquo;s Tender Torture</b><i>Frank</i><em>2024</em></div>
+        <div class="credit"><b>From Fast Food Girl to First Lady</b><i>Bearded Gangster</i><em>2024</em></div>
+        <div class="credit"><b>Found You All Along</b><i>Mr. Thomas</i><em>2024</em></div>
+        <div class="credit"><b>The CEO&rsquo;s Forgotten Bride: Reclaiming Our Vows</b><i>Mr. Thompson</i><em>2024</em></div>
+        <div class="credit"><b>Billionaire Twins: Daddy, Please Take Mommy</b><i>Richard</i><em>2024</em></div>
+        <div class="credit"><b>Slept With My Alpha</b><i>Principal</i></div>
+        <div class="credit"><b>Boardroom Seduction</b><i>Supporting</i></div>
+        <div class="credit"><b>Diving Into Love My Champion</b><i>Supporting</i></div>
+        <div class="credit-keep"><h3>Television</h3><div class="credit"><b>Hitler&rsquo;s Last Stand</b><i>Reenactor &middot; 10 episodes</i><em>2022&ndash;23</em></div></div>
+        <div class="credit-keep"><h3>Short film</h3><div class="credit"><b>Replaced</b><i>Leo</i><em>2022</em></div></div>
+        <div class="credit"><b>Ace</b><i>Dealer</i><em>2021</em></div>
+        <div class="credit"><b>Psychodellics</b><i>Supporting</i></div>
+        <div class="credit-keep"><h3>Commercial</h3><div class="credit"><b>Axion Film Gear</b><i>Principal &middot; dir. Alexander LeBlanc</i></div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" id="contact">
+  <div class="seam" aria-hidden="true"><div class="seam-text"></div></div>
+  <div class="bg-layer bg-photo" style="--img: url(assets/photos/ring-red.jpg); --ipos: 70% 40%" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h2 class="display">Casting &amp; bookings</h2>
+        <div class="foot-grid">
+          <div>
+            <h3 class="label">Representation</h3>
+            <a class="agency" href="https://www.lloydtalent.com/" rel="noopener">Lloyd Talent</a>
+            <p class="sub">Lissa Lloyd &middot; <a class="dm" href="mailto:lissa@lloydtalent.com">lissa@lloydtalent.com</a></p>
+            <p class="sub">All booking requests through his agency.</p>
+          </div>
+          <div>
+            <h3 class="label">Joseph directly</h3>
+            <a class="dm" href="https://www.instagram.com/joey.a.mckerricher/" rel="noopener">Message on Instagram</a>
+          </div>
+          <div>
+            <h3 class="label">Profiles</h3>
+            <ul>
+              <li><a href="https://www.imdb.com/name/nm11325333/" rel="noopener">IMDb</a></li>
+              <li><a href="https://www.instagram.com/joey.a.mckerricher/" rel="noopener">Instagram</a></li>
+              <li><a href="assets/docs/Joseph-Mckerricher-Resume.pdf" download>R&eacute;sum&eacute; (PDF)</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="cluster c3" aria-hidden="true">
+        <figure class="snap" style="--x:0%;--y:10%;--w:56%;--r:-6deg"><div class="paper"><img src="assets/photos/peacoat-grin.jpg" alt="" loading="lazy"></div></figure>
+        <figure class="snap" style="--x:42%;--y:0%;--w:56%;--r:5deg;--z:2;--tape:-10deg"><div class="paper"><img src="assets/photos/tweed-red-light.jpg" alt="" loading="lazy"></div></figure>
+      </div>
+    </div>
+    <p class="colophon">© 2026 Joseph Mckerricher<span class="built-by">Built by Harrison Keen, <a href="https://harrisonkeen.tech" rel="noopener">harrisonkeen.tech</a></span></p>
+  </div>
+</footer>
+
+<dialog class="lightbox" aria-label="Photo viewer">
+  <img alt="">
+  <button class="lightbox-step prev" aria-label="Previous photo">‹</button>
+  <button class="lightbox-step next" aria-label="Next photo">›</button>
+  <button class="lightbox-close" aria-label="Close">×</button>
+</dialog>
+
+<script>
+  const root = document.documentElement;
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const el = (tag, className, ...kids) => { const e = document.createElement(tag); if (className) e.className = className; e.append(...kids); return e; };
+  const rnd = (a, b) => a + Math.random() * (b - a);
+
+  // Hero: the name is sized to a share of the page width, then pulled up over the photo,
+  // and the photo takes whatever height is left so the hero fills one screen.
+  const hero = document.querySelector('.hero');
+  const stage = hero.querySelector('.stage');
+  const name = hero.querySelector('.name');
+  const fit = name.querySelector('.fit');
+  const words = [...name.querySelectorAll('.w')];
+  const photoBox = hero.querySelector('.hero-photo');
+  const under = hero.querySelector('.under');
+  // phones: the pinned first-screen height, never live innerHeight (it changes as the toolbar hides)
+  const screenH = () => parseFloat(root.style.getPropertyValue('--screen')) || innerHeight;
+  function layoutHero() {
+    const vw = root.clientWidth;
+    const stack = vw < 700;
+    hero.classList.toggle('stacked', stack);
+    const gutter = Math.max(16, Math.min(vw * .05, 72));
+    name.style.marginTop = '';
+    name.style.fontSize = '100px';
+    // offsetWidth ignores the slam transform, so measuring mid-animation is safe
+    const width = stack ? Math.max(...words.map(w => w.offsetWidth)) : fit.offsetWidth;
+    const target = stack ? vw - 2 * gutter : Math.min(vw - 2 * gutter, 1320) * .8;
+    name.style.fontSize = (100 * target / width) + 'px';
+    const nameH = name.offsetHeight;
+    const overlap = stack ? .5 : .46;
+    name.style.marginTop = (-overlap * nameH) + 'px';
+    const room = screenH() - 24 - 36 - (under.offsetHeight + 14) - nameH * (1 - overlap);
+    photoBox.style.height = Math.max(vw < 600 ? 320 : 380, room) + 'px';
+  }
+  layoutHero();
+  document.fonts.ready.then(layoutHero);
+  addEventListener('resize', layoutHero);
+
+  // Impact: grit sprays off each word as it lands; the frame shakes, a red flash
+  const cv = hero.querySelector('.sparks'), cx = cv.getContext('2d');
+  let bits = [], sparkRaf = 0;
+  function sizeCanvas() { const d = devicePixelRatio || 1; cv.width = hero.clientWidth * d; cv.height = hero.clientHeight * d; cx.setTransform(d, 0, 0, d, 0, 0); }
+  function burst(word) {
+    const h = hero.getBoundingClientRect(), r = word.getBoundingClientRect();
+    const y = r.bottom - h.top - r.height * .12;
+    const n = Math.round(Math.min(70, r.width / 6));
+    for (let i = 0; i < n; i++) {
+      const x = r.left - h.left + Math.random() * r.width;
+      const a = -Math.PI / 2 + (Math.random() - .5) * 2.6, v = 2 + Math.random() * 7;
+      bits.push({ x, y, vx: Math.cos(a) * v * (Math.random() < .5 ? -1 : 1), vy: Math.sin(a) * v, s: 1 + Math.random() * 3.2, life: 1, rot: Math.random() * 6,
+        c: Math.random() < .22 ? '#c0251f' : Math.random() < .5 ? '#ebe5db' : '#7d766f' });
+    }
+    for (let i = 0; i < 8; i++) bits.push({ dust: 1, x: r.left - h.left + Math.random() * r.width, y, vx: (Math.random() - .5) * 1.2, vy: -.3 - Math.random() * .5, s: 30 + Math.random() * 50, life: 1 });
+    const flash = hero.querySelector('.flash');
+    hero.style.setProperty('--fy', (y / h.height * 100) + '%');
+    [stage, flash].forEach(e => { e.classList.remove('hit'); void e.offsetWidth; e.classList.add('hit'); });
+    if (!sparkRaf) sparkRaf = requestAnimationFrame(drawBits);
+  }
+  function drawBits() {
+    cx.clearRect(0, 0, cv.width, cv.height);
+    bits = bits.filter(b => b.life > 0);
+    for (const b of bits) {
+      if (b.dust) {
+        b.x += b.vx; b.y += b.vy; b.s += .9; b.life -= .012;
+        const g = cx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.s);
+        g.addColorStop(0, `rgba(160,150,140,${.11 * b.life})`); g.addColorStop(1, 'rgba(160,150,140,0)');
+        cx.fillStyle = g; cx.fillRect(b.x - b.s, b.y - b.s, b.s * 2, b.s * 2);
+      } else {
+        b.vy += .32; b.vx *= .985; b.x += b.vx; b.y += b.vy; b.rot += .2; b.life -= .016;
+        cx.save(); cx.globalAlpha = Math.max(0, b.life); cx.fillStyle = b.c; cx.translate(b.x, b.y); cx.rotate(b.rot);
+        cx.fillRect(-b.s / 2, -b.s / 4, b.s, b.s / 2); cx.restore();
+      }
+    }
+    sparkRaf = bits.length ? requestAnimationFrame(drawBits) : 0;
+  }
+  words.forEach(w => w.addEventListener('animationend', e => { if (e.animationName === 'slam') burst(w); }));
+  sizeCanvas();
+  let cvW = hero.clientWidth;
+  addEventListener('resize', () => { if (hero.clientWidth !== cvW) { cvW = hero.clientWidth; sizeCanvas(); } });
+
+  // Embers, spread down the whole page at about 18 per screenful (10 on phones)
+  const embers = document.querySelector('.embers');
+  function makeEmbers() {
+    embers.replaceChildren();
+    if (calm) return;
+    const n = Math.round((innerWidth < 600 ? 10 : 18) * document.body.scrollHeight / screenH());
+    for (let i = 0; i < n; i++) {
+      const s = el('i');
+      s.style.cssText = `--x:${rnd(2, 98)}%;--y:${rnd(2, 100)}%;--s:${rnd(1.5, 3.6).toFixed(1)}px;--d:${rnd(5, 11).toFixed(1)}s;--dl:${rnd(-11, 0).toFixed(1)}s;--dx:${rnd(-40, 40).toFixed(0)}px;--rise:${rnd(180, 420).toFixed(0)}px`;
+      embers.append(s);
+    }
+  }
+
+  // Ticker: a second copy of the items so the loop has no seam
+  const track = document.querySelector('.ticker-track');
+  [...track.children].forEach(s => { const c = s.cloneNode(true); c.setAttribute('aria-hidden', 'true'); track.append(c); });
+
+  // Tape: his name, run along each seam
+  document.querySelectorAll('.seam-text').forEach(t => { for (let i = 0; i < 12; i++) t.append(el('span', '', 'Joseph Mckerricher ✕ Actor ✕ Martial artist ✕ Trainer ✕')); });
+
+  // Reel: poster and play button first; our own controls appear once it starts
+  const player = document.getElementById('player');
+  const reel = document.getElementById('reel');
+  const vbox = reel.querySelector('.reel-video');
+  const start = () => { reel.classList.add('played'); player.play().catch(() => {}); };
+  const togglePlay = () => player.paused ? start() : player.pause();
+  const seek = reel.querySelector('.hud-seek'), clock = reel.querySelector('.hud-time');
+  const mmss = t => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
+  const tabs = [...reel.querySelectorAll('.reel-tabs button')];
+  let fallback = 190;
+  tabs.forEach(t => t.addEventListener('click', () => {
+    if (t.getAttribute('aria-pressed') === 'true') return;
+    tabs.forEach(o => o.setAttribute('aria-pressed', String(o === t)));
+    player.pause();
+    reel.classList.remove('played', 'playing');
+    reel.classList.toggle('audio', t.hasAttribute('data-audio'));
+    reel.querySelector('.n-reel').hidden = t !== tabs[0];
+    fallback = +t.dataset.len;
+    player.poster = t.dataset.poster;
+    player.src = t.dataset.src;
+    player.load();
+    seek.value = 0;
+    clock.textContent = `0:00 / ${mmss(fallback)}`;
+    reel.querySelector('.reel-len').textContent = mmss(fallback);
+  }));
+  player.addEventListener('timeupdate', () => {
+    const d = player.duration || fallback;
+    seek.value = 1000 * player.currentTime / d;
+    clock.textContent = `${mmss(player.currentTime)} / ${mmss(d)}`;
+  });
+  seek.addEventListener('input', () => { player.currentTime = seek.value / 1000 * (player.duration || fallback); });
+  reel.querySelector('.hud-play').addEventListener('click', togglePlay);
+  player.addEventListener('click', togglePlay);
+  reel.querySelector('.hud-mute').addEventListener('click', () => { player.muted = !player.muted; vbox.classList.toggle('muted', player.muted); });
+  reel.querySelector('.hud-fs').addEventListener('click', () => document.fullscreenElement ? document.exitFullscreen() : vbox.requestFullscreen());
+  let idle;
+  const wake = () => { reel.classList.remove('idle'); clearTimeout(idle); idle = setTimeout(() => reel.classList.add('idle'), 2500); };
+  ['mousemove', 'touchstart', 'keydown'].forEach(e => vbox.addEventListener(e, wake, { passive: true }));
+  player.addEventListener('play', wake);
+  reel.querySelector('.reel-start').addEventListener('click', start);
+  reel.querySelector('.play-btn').addEventListener('click', () => {
+    if (!player.paused) return player.pause();
+    player.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    start();
+  });
+  player.addEventListener('playing', () => reel.classList.add('playing'));
+  ['pause', 'ended', 'emptied'].forEach(e => player.addEventListener(e, () => reel.classList.remove('playing')));
+  new IntersectionObserver(([e]) => { if (!e.isIntersecting && !player.paused) player.pause(); }).observe(player);
+
+  // Line-up: numbered placards, and the lightbox
+  const gallery = document.querySelector('.gallery');
+  const tiles = [...gallery.querySelectorAll('button')];
+  const shots = tiles.map(b => b.querySelector('img'));
+  tiles.forEach((b, i) => b.append(el('span', 'no', String(i + 1).padStart(2, '0'))));
+  const lb = document.querySelector('.lightbox');
+  const big = lb.querySelector('img');
+  let at = 0;
+  const show = i => { at = (i + shots.length) % shots.length; big.src = shots[at].src; big.alt = shots[at].alt; };
+  tiles.forEach((b, i) => b.addEventListener('click', () => { show(i); lb.showModal(); }));
+  lb.querySelector('.prev').addEventListener('click', () => show(at - 1));
+  lb.querySelector('.next').addEventListener('click', () => show(at + 1));
+  lb.querySelector('.lightbox-close').addEventListener('click', () => lb.close());
+  lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
+  lb.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') show(at - 1); if (e.key === 'ArrowRight') show(at + 1); });
+
+  // Height chart behind the whole line-up: 0' at the foot of the last row, 7' at the top of the first, a line every half foot
+  const wall = gallery.querySelector('.wall');
+  function layoutWall() {
+    const g = gallery.getBoundingClientRect();
+    const rects = tiles.map(t => t.getBoundingClientRect());
+    const top = Math.min(...rects.map(r => r.top)) - g.top;
+    const bottom = Math.max(...rects.map(r => r.bottom)) - g.top;
+    const marks = [];
+    const step = (bottom - top) / 14;
+    for (let k = 0; k <= 14; k++) {
+      const y = bottom - k * step;
+      const line = el('i', k % 2 ? '' : 'ft'); line.style.top = y + 'px'; marks.push(line);
+      if (k % 2 === 0) { const lab = el('b', '', `${k / 2}'`); lab.style.top = y + 'px'; marks.push(lab); }
+    }
+    wall.replaceChildren(...marks);
+  }
+
+  // Credits: balanced columns, so every column ends on the same line. Breaks between types are preferred.
+  const credits = document.querySelector('.credits');
+  const rows = [...credits.children];
+  rows.forEach((r, i) => { const h = r.querySelector('h3'); if (!h) return; let n = 1; for (let j = i + 1; j < rows.length && !rows[j].querySelector('h3'); j++) n++; h.append(el('sup', '', String(n))); });
+  const colCount = () => { const w = credits.parentElement.clientWidth; return w > 980 ? 3 : w > 620 ? 2 : 1; };
+  function layoutCredits() {
+    const n = colCount();
+    credits.style.setProperty('--cols', n);
+    const cols = Array.from({ length: n }, () => el('div', 'credit-col'));
+    cols[0].append(...rows);
+    credits.replaceChildren(...cols);
+    if (n === 1) return;
+    const h = rows.map(r => r.offsetHeight);
+    const sum = (a, b) => h.slice(a, b).reduce((x, y) => x + y, 0);
+    const penalty = i => rows[i].classList.contains('credit-keep') ? 0 : 40;
+    let best = null;
+    const cuts = n === 2 ? rows.map((_, i) => [i]).slice(1) :
+      rows.flatMap((_, i) => rows.map((_, j) => [i, j])).filter(([i, j]) => i > 0 && j > i);
+    for (const c of cuts) {
+      const edges = [0, ...c, rows.length];
+      const tallest = Math.max(...edges.slice(1).map((e, k) => sum(edges[k], e)));
+      const score = tallest + c.reduce((t, i) => t + penalty(i), 0);
+      if (!best || score < best.score) best = { score, c };
+    }
+    const edges = [0, ...best.c, rows.length];
+    cols.forEach((col, k) => col.replaceChildren(...rows.slice(edges[k], edges[k + 1])));
+  }
+
+  // Width-dependent layout; phones fire resize as the toolbar slides, so only a width change re-runs it
+  let lastW = 0;
+  function relayout(force) {
+    if (!force && innerWidth === lastW) return;
+    lastW = innerWidth;
+    layoutCredits(); layoutWall(); makeEmbers();
+  }
+  relayout(true);
+  document.fonts.ready.then(() => relayout(true));
+  addEventListener('load', () => relayout(true));
+  addEventListener('resize', () => relayout(false));
+
+</script>
+</body>
+</html>
